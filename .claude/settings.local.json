@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(gcc --version)",
+      "Bash(apt list *)",
+      "Bash(grep -v 'gyp ERR! cwd\\\\|gyp ERR! node\\\\|gyp ERR! node-gyp\\\\|gyp ERR! $npm')",
+      "Bash(npm uninstall *)",
+      "Bash(npm_config_cxx_flags=\"-std=c++20\" npm install better-sqlite3)",
+      "Bash(node -e \"const db = require\\('./db'\\); console.log\\('DB OK:', db.name\\)\")",
+      "Bash(npm audit *)",
+      "Bash(npm run *)",
+      "Bash(timeout 3 node server.js)",
+      "Bash(node server.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/)",
+      "Bash(curl -s http://localhost:3001/api/predictions)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/predict)",
+      "Bash(kill %1)",
+      "Bash(chmod +x *)",
+      "Bash(bash -n \"/home/youssef/Desktop/World Cup/deploy.sh\")"
+    ]
+  }
+}

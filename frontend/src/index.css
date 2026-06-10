@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom properties ── */
+:root {
+  --navy: #0A1628;
+  --gold: #FFD700;
+  --blue: #00A3E0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--navy);
+  color: #fff;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  margin: 0;
+}
+
+/* ── Animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.25); }
+  50%       { box-shadow: 0 0 50px rgba(255, 215, 0, 0.65); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes countdown-tick {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ── Utility classes ── */
+.float-animation  { animation: float 3.5s ease-in-out infinite; }
+.glow-gold        { animation: pulse-glow 2s ease-in-out infinite; }
+.fade-in          { animation: fadeSlideIn 0.5s ease-out both; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #FFD700 0%, #fff 35%, #FFD700 65%, #fff 85%, #FFD700 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Glassmorphism cards ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+}
+
+.glass-card-dark {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  border-radius: 16px;
+}
+
+/* ── Gradient page background ── */
+.gradient-bg {
+  background: radial-gradient(ellipse at 20% 30%, #0d2144 0%, #0A1628 40%, #071020 100%);
+  min-height: 100vh;
+}
+
+/* ── Team drag rows ── */
+.team-row {
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+  cursor: grab;
+  user-select: none;
+}
+.team-row:active { cursor: grabbing; }
+.team-row.is-dragging {
+  opacity: 0.45;
+  background: rgba(255, 215, 0, 0.08) !important;
+}
+.team-row.drag-target {
+  border-top: 2px solid #FFD700;
+}
+
+/* ── Rank badges ── */
+.rank-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.rank-1 { background: linear-gradient(135deg, #FFD700, #FFA800); color: #0A1628; }
+.rank-2 { background: linear-gradient(135deg, #d0d0d0, #a8a8a8); color: #0A1628; }
+.rank-3 { background: linear-gradient(135deg, #cd7f32, #8b4513); color: #fff; }
+.rank-4 { background: rgba(255, 255, 255, 0.12); color: rgba(255,255,255,0.55); }
+
+/* ── Buttons ── */
+.btn-primary {
+  background: linear-gradient(135deg, #FFD700, #FFA800);
+  color: #0A1628;
+  font-weight: 800;
+  padding: 13px 32px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  text-align: center;
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.45);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  padding: 11px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-size: 15px;
+  display: inline-block;
+  text-align: center;
+}
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Confirmed group glow ── */
+.group-confirmed {
+  border-color: rgba(74, 222, 128, 0.45) !important;
+  box-shadow: 0 0 18px rgba(74, 222, 128, 0.12);
+}
+
+/* ── Countdown digit flip animation ── */
+.countdown-digit {
+  animation: countdown-tick 1s ease;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar               { width: 5px; }
+::-webkit-scrollbar-track         { background: rgba(255,255,255,0.04); }
+::-webkit-scrollbar-thumb         { background: rgba(255,215,0,0.28); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover   { background: rgba(255,215,0,0.5); }
+
+/* ── Input styling ── */
+input[type="text"] {
+  outline: none;
+}
+input[type="text"]:focus {
+  border-color: #FFD700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
