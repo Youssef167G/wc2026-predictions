@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
-    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build && mkdir -p ../backend/public && cp -r dist ../backend/public",
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build && mkdir -p ../backend/public && cp -r dist/. ../backend/public/",
     "dev": "concurrently \"cd backend && node server.js\" \"cd frontend && npm run dev\"",
     "start": "cd backend && npm install && node server.js",
     "deploy": "bash deploy.sh"

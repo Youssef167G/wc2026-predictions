@@ -11,6 +11,7 @@ app.use(express.json());
 
 // Serve React build in production
 const PUBLIC = path.join(__dirname, 'public');
+console.log(`Serving static files from: ${PUBLIC}`);
 app.use(express.static(PUBLIC));
 
 // POST /api/predictions — save (upsert) by name
